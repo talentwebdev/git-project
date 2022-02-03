@@ -8,3 +8,8 @@ git cherry pick <commit id>
 ```
 git cherry pick <commit id> -n
 ```
+
+## Git push particular commit.
+```
+git push <remotename> <commit SHA>:<remotebranchname>
+```

@@ -67,3 +67,72 @@ git log --oneline
 ```
 git diff 27c49c6 names.txt
 ```
+
+
+## How to remove commit in git history? 
+```
+git reset [commit-id]
+```
+
+## How to merge commit together?
+- You can reset to the pevious commit of the commits that you're going to merge. 
+
+```
+commit 9ce8a4492534edfaaa11405f47d6d1e7e58c5fe7 (HEAD -> new-branch)
+Author: TalentWebDev <49565243+talentwebdev@users.noreply.github.com>
+Date:   Sat Mar 5 05:04:09 2022 +0800
+
+3
+
+commit 7eb4bba38404b85127e0c175b97dc603e97bd59d
+Author: TalentWebDev <49565243+talentwebdev@users.noreply.github.com>
+Date:   Sat Mar 5 05:00:33 2022 +0800
+
+1
+
+commit 7ecf146bae5ff4a11cc53d98c01d659a7bca16e9 (origin/new-branch, origin/master, temp, master)
+Author: TalentWebDev <49565243+talentwebdev@users.noreply.github.com>
+Date:   Sat Mar 5 04:53:54 2022 +0800
+
+rename readme.md
+
+commit e1fd70a2a4385ec9546159a0ce7312b0b4d0e6d5
+Author: TalentWebDev <49565243+talentwebdev@users.noreply.github.com>
+Date:   Mon Jan 24 16:54:03 2022 +0800
+
+first commit file contains 1 line
+
+commit 27c49c618ca8e170fd3918957a5cfac695d920f7
+Author: talentwebdev <zhuping.man@outlook.com>
+Date:   Fri Jan 14 14:02:09 2022 +0800
+
+adding names.txt file
+```
+In the above case, if you reset commit to `7ecf146bae5ff4a11cc53d98c01d659a7bca16e9`, the later changes/commits will be staged. 
+Then, you can creat a new commit from there.
+```
+git reset 7ecf146bae5ff4a11cc53d98c01d659a7bca16e9
+git add ./ 
+git commit -m "new commit" 
+```
+
+- You can also use rebase and squashing commits.
+There are two types here: pick / squash
+Pick represents the separate commit. 
+Squash reprseents merging into one commit. 
+
+```
+git rebase -i 7ecf146bae5ff4a11cc53d98c01d659a7bca16e9
+```
+Then, you'll see something like this:
+```
+pick 7eb4bba 1
+pick 9ce8a44 3
+pick f21e7fe 2
+```
+You can squashing by changing pick to s.
+```
+pick 7eb4bba 1
+s 9ce8a44 3
+s f21e7fe 2
+```

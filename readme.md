@@ -139,6 +139,8 @@ s f21e7fe 2
 
 ## Git Rebase vs Merge
 
+[Docs](https://git-scm.com/docs/git-rebase)
+
 Let's assume that there are 3 commits in master branch(m1, m2, m3). And we create feature branch based on m2(master). 
 Then, we added f1 and f2 in feature branch. So the history will be (m1, m2, f1, f2) in feature branch. 
 

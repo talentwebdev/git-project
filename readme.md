@@ -136,3 +136,32 @@ pick 7eb4bba 1
 s 9ce8a44 3
 s f21e7fe 2
 ```
+
+## Git Rebase vs Merge
+
+Let's assume that there are 3 commits in master branch(m1, m2, m3). And we create feature branch based on m2(master). 
+Then, we added f1 and f2 in feature branch. So the history will be (m1, m2, f1, f2) in feature branch. 
+
+In master branch and run this command
+
+```
+git merge feature
+```
+
+It'll create merge commit by merging master and feature. 
+
+```
+git merge --squash feature
+```
+
+This will merge f1 and f2 into one and not create a commit. But changes will be brought in. 
+
+In feature branch, if we do git rebase, it'll compare the latest commits and brought them as base commit. 
+
+E.g. 
+the history will be m1, m2, m3, f1, f2 
+
+when you run in feature branch
+```
+git rebase master
+```
